@@ -124,8 +124,10 @@
                 // record selected indexes
                 var selectedIndexes = [];
                 select && (selectedIndexes = dataTable.rows({selected: true}).indexes().toArray());
-
-                var row = dataTable.row(this);
+                /*'this' selects the td not tr. first find the tr and get the row */
+                var tr = $(this).closest('tr[role="row"]'); 
+                var row = dataTable.row(tr);
+                
                 var index = row.index();
                 var data = row.data();
 
